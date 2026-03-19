@@ -20,28 +20,22 @@ function handleAuthError(error: unknown) {
   return NextResponse.json({ message: "Internal server error" }, { status: 500 });
 }
 
-export async function GET(request: NextRequest, { params }: RouteParams) {
+
+export async function GET(request: NextRequest, context: { params: Promise<{ id: string }> }) {
   try {
-    if (!params?.id || !Types.ObjectId.isValid(params.id)) {
-      return invalidIdResponse();
-    }
-
     await connectDB();
-    const authUser = getUserFromRequest(request);
 
-    const workoutPlan = await WorkoutPlanModel.findOne({
-      _id: params.id,
-      userId: authUser.userId,
-    }).lean();
+    const { id } = await context.params; // Await the params
 
+    const workoutPlan = await WorkoutPlanModel.findById(id);
     if (!workoutPlan) {
       return NextResponse.json({ message: "Workout plan not found" }, { status: 404 });
     }
 
     return NextResponse.json(workoutPlan);
   } catch (error) {
-    console.error("Get workout plan error", error);
-    return handleAuthError(error);
+    console.error("Error fetching workout plan:", error);
+    return NextResponse.json({ message: "Internal server error" }, { status: 500 });
   }
 }
 
