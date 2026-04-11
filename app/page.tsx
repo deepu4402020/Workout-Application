@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import Chatbot from './components/Chatbot';
 import {
   Dumbbell,
   Instagram,
@@ -306,7 +307,6 @@ export default function Home() {
                       Create Workout +
                     </Link>
                   </motion.div>
-
                   {/* Stats row */}
                   <motion.div
                     initial={{ opacity: 0 }}
@@ -452,6 +452,7 @@ export default function Home() {
           </main>
 
           <Footer />
+          <Chatbot />
         </motion.div>
       )}
     </>
