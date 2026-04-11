@@ -34,9 +34,9 @@ interface NavLink {
 const navLinks: NavLink[] = [
   { path: '/', name: 'Home', icon: 'home' },
   { path: '/exercises', name: 'Exercises', icon: 'dumbbell' },
-  { path: '/my-plans', name: 'My Plans', icon: 'calendar' },
   { path: '/diet-plans', name: 'Diet Plans', icon: 'utensils' },
   { path: '/find-gyms', name: 'Find Gyms', icon: 'map-pin' },
+  { path: '/pricing', name: 'Pricing', icon: 'dollar-sign' },
 ];
 
 type ProfilePictureUpdateDetail = { picture: string };

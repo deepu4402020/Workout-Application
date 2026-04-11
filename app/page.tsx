@@ -18,65 +18,6 @@ import {
   Heart,
 } from 'lucide-react';
 
-/* ─────────────────────────────────────────
-   Loading Screen
-───────────────────────────────────────── */
-function LoadingScreen({ onDone }: { onDone: () => void }) {
-  useEffect(() => {
-    const t = setTimeout(onDone, 2400);
-    return () => clearTimeout(t);
-  }, [onDone]);
-
-  return (
-    <motion.div
-      className="fixed inset-0 z-9999 flex flex-col items-center justify-center bg-[#0d0d0f]"
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.6, ease: 'easeInOut' }}
-    >
-      {/* Animated rings */}
-      {[0, 1, 2].map((i) => (
-        <motion.span
-          key={i}
-          className="absolute rounded-full border border-purple-500/30"
-          style={{ width: 120 + i * 80, height: 120 + i * 80 }}
-          animate={{ scale: [1, 1.15, 1], opacity: [0.6, 0.2, 0.6] }}
-          transition={{ duration: 2, delay: i * 0.3, repeat: Infinity }}
-        />
-      ))}
-
-      {/* Icon */}
-      <motion.div
-        initial={{ scale: 0, rotate: -180 }}
-        animate={{ scale: 1, rotate: 0 }}
-        transition={{ type: 'spring', stiffness: 200, damping: 16, delay: 0.2 }}
-        className="relative z-10 flex items-center justify-center w-20 h-20 rounded-2xl bg-linear-to-br from-purple-600 to-violet-500 shadow-[0_0_60px_rgba(139,92,246,0.6)]"
-      >
-        <Dumbbell className="w-10 h-10 text-white" strokeWidth={1.8} />
-      </motion.div>
-
-      {/* Brand name */}
-      <motion.p
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.55 }}
-        className="relative z-10 mt-6 text-2xl font-bold tracking-widest text-white uppercase"
-        style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: '0.25em' }}
-      >
-        Eleweight
-      </motion.p>
-
-      {/* Progress bar */}
-      <motion.div className="relative z-10 mt-8 w-40 h-0.5 overflow-hidden rounded-full bg-white/10">
-        <motion.div
-          className="h-full rounded-full bg-linear-to-r from-purple-500 to-violet-400"
-          initial={{ width: '0%' }}
-          animate={{ width: '100%' }}
-          transition={{ duration: 2, ease: 'easeInOut', delay: 0.3 }}
-        />
-      </motion.div>
-    </motion.div>
-  );
-}
 
 /* ─────────────────────────────────────────
    Stats ticker
@@ -228,9 +169,9 @@ export default function Home() {
       {/* Google Font */}
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap');`}</style>
 
-      <AnimatePresence>{loading && <LoadingScreen onDone={() => setLoading(false)} />}</AnimatePresence>
 
-      {!loading && (
+
+      
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -300,12 +241,7 @@ export default function Home() {
                       Browse Exercises
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </Link>
-                    <Link
-                      href="/my-plans"
-                      className="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-800 font-semibold px-7 py-3.5 rounded-xl border border-gray-200 transition-all text-sm"
-                    >
-                      Create Workout +
-                    </Link>
+                 
                   </motion.div>
                   {/* Stats row */}
                   <motion.div
@@ -441,7 +377,7 @@ export default function Home() {
                   </p>
                 </div>
                 <Link
-                  href="/get-started"
+                  href="/pricing"
                   className="relative flex-shrink-0 inline-flex items-center gap-2 bg-white text-purple-700 font-bold px-8 py-3.5 rounded-xl hover:bg-purple-50 transition-colors text-sm shadow-lg"
                 >
                   Get Started Free
@@ -454,7 +390,7 @@ export default function Home() {
           <Footer />
           <Chatbot />
         </motion.div>
-      )}
+      
     </>
   );
 }
