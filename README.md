@@ -1,4 +1,4 @@
-# Kinetix: AI-Powered Biomechanics & Fitness Platform
+# Eleweight: AI-Powered Biomechanics & Fitness Platform
 
 An enterprise-grade, full-stack fitness application engineered to serve as a comprehensive virtual personal trainer. The platform leverages advanced in-browser Computer Vision (Google MediaPipe) for real-time postural form validation and repetition tracking. Powered by Next.js and MongoDB, it integrates LLMs (OpenAI/Gemini) to dynamically generate personalized diet routines and workout plans, packaged within a premium, highly responsive user interface built with Tailwind CSS and Framer Motion.
 

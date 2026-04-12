@@ -3,6 +3,8 @@
 # env files
 .env
 
+.cursor
+
 # dependencies
 /node_modules
 /.pnp
