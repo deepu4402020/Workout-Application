@@ -18,7 +18,6 @@ interface TeaserCardProps {
 
 export default function TeaserCard({ 
   title, 
-  description, // Destructured but not rendered, as per user request to drop description
   label, 
   link, 
   icon: Icon, 

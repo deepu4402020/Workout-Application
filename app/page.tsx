@@ -17,7 +17,6 @@ import {
   MapPin,
   TrendingUp,
   Zap,
-  Star,
 } from 'lucide-react';
 
 /* ══════════════════════════════════════════
